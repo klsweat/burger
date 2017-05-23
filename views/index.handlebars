@@ -1,0 +1,109 @@
+<nav class="white" role="navigation">
+  <div class="nav-wrapper container">
+    <a id="logo-container" href="#" class="brand-logo">EAT-DA-BURGER</a>
+  </div>
+</nav>
+
+<div id="index-banner" class="parallax-container">
+  <div class="section no-pad-bot">
+    <div class="container">
+
+      <br><br>
+    </div>
+  </div>
+  <div class="parallax" style="background-color: #FDA93D;">
+    <center>
+      <iframe src="https://giphy.com/embed/l4Ki5FgQxmVUfkOvC" width="343" height="480" frameBorder="0" class="giphy-embed" style="position: relative; bottom: 58px;"
+        allowFullScreen></iframe>
+    </center>
+  </div>
+</div>
+
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <div class="col s12 m4">
+        <div class="card">
+          <div class="card-action">
+            <span class="card-title" style="color: #333;">Burgers</span>
+          </div>
+          <!--/card-action-->
+          <div class="card-action">
+            <!--/if burger has not been devoured-->
+            <ul>
+              {{#each burgers}} {{#unless this.devoured}} {{this.burger_name}}
+              <form action="/{{this.id}}?_method=PUT" method="POST">
+                <input type="hidden" name="devour" value="true">
+                <button type="submit">
+                  <a class=" waves-effect">Devour</a>
+                </button>
+              </form>
+              {{/unless}} {{/each}}
+            </ul>
+          </div>
+        </div>
+        <!--/card-->
+      </div>
+      <!--/co s12 m4-->
+
+      <div class="col s12 m4">
+        <div class="card">
+          <div class="card-action">
+            <span class="card-title" style="color: #333;">Add a Burger</span>
+          </div>
+          <form class="create-update-form" action="/" method="POST">
+
+            <div class="card-action">
+              <p class="light">
+
+                <div class="form-group">
+                  <label for="burger_name_input">Burger Name:</label>
+                  <input type="text" id="burger_name_input" name="burger_name_input">
+                </div>
+
+              </p>
+
+            </div>
+            <!--/card-content-->
+            <div class="card-action">
+              <button class="btn waves-effect waves-light" type="submit">Add Burger
+                <i class="material-icons right">add</i>
+              </button>
+            </div>
+          </form>
+        </div>
+        <!--/card-->
+      </div>
+      <!--/co s12 m4-->
+
+      <div class="col s12 m4">
+        <div class="card">
+          <div class="card-action">
+            <span class="card-title" style="color: #333;">Devoured</span>
+          </div>
+           <div class="card-action">
+
+
+            <!--/If burger has been devoured-->
+            <ul>
+              {{#each burgers}} {{#if this.devoured}}
+              <li>
+                {{this.burger_name}}
+              </li>
+              <br> {{/if}} {{/each}}
+            </ul>
+          </div>
+          <div class="card-action">
+          </div>
+        </div>
+        <!--/card-->
+      </div>
+      <!--/co s12 m4-->
+
+    </div>
+    <!--/row-->
+
+  </div>
+  <!--/section-->
+</div>
+<!--/container-->
